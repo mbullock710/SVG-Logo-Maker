@@ -4,7 +4,7 @@
 [Description](#Description)  
 [Installation](#Installation)  
 [Usage](#Usage)  
-[Video-Walkthrough](#Video-Walkthrough)
+[Video-Walkthrough](#Video-Walkthrough)  
 [Questions](#Questions)  
 
   ## Description
@@ -21,10 +21,10 @@
 
   ## Video-Walkthrough
 
-  [Title](<../../../Downloads/SVG-Logo-Maker - Module 10 Challenge - Michael Bullock.webm>)
+  [SVG-Logo-Maker - Module 10 Challenge - Michael Bullock.webm](https://github.com/mbullock710/SVG-Logo-Maker/assets/148500556/c8f63fd1-72ec-4dd6-b8f4-f640c27af335)
 
   ## Questions
 
-  Please reach me with any addition questions below:<br>
+  Please reach me with any additional questions below:<br>
   https://github.com/mbullock710<br>
   mbullock710@gmail.com
