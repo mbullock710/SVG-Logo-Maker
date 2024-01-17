@@ -69,9 +69,8 @@ function writeToFile(fileName, content) {
 
 async function init() {
     const res = await inquirer.prompt(questions);
-    const contentPromise = generateSVG(res);
 
-    contentPromise.then((content) => {
+    generateSVG(res).then((content) => {
         writeToFile('logo.svg', content);
     })
 }
