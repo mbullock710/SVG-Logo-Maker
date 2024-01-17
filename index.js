@@ -1,7 +1,5 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { SVG } = require('@svgdotjs/svg.js');
-
 
 const questions = [
     {
@@ -27,7 +25,14 @@ const questions = [
     },
 ]
 
-function generateSVG({ text, textColor, shape, shapeColor }) {
+async function generateSVG({ text, textColor, shape, shapeColor }) {
+    const { createSVGWindow } = await import('svgdom');
+    const { SVG, registerWindow } = await import('@svgdotjs/svg.js');
+
+    const window = createSVGWindow();
+    const document = window.document;
+    registerWindow(window, document);
+
     const svg = SVG().size(300, 200);
 
     if (text) {
@@ -37,7 +42,16 @@ function generateSVG({ text, textColor, shape, shapeColor }) {
     if (shape) {
         switch (shape) {
             case 'circle':
-                svg.circle(50).fill(shapeColor);
+                const circle = svg.circle(50).fill(shapeColor).center(150, 100);
+                if (text) {
+                    svg.text(text).fill(textColor).center(circle.cx(), circle.cy());
+                }
+                break;
+            case 'triangle':
+                svg.polygon('150,50 100,150 200,150').fill(shapeColor);
+                break;
+            case 'square':
+                svg.rect(100, 100, { x: 100, y: 50, fill: shapeColor });
                 break;
             default:
                 console.log('Invalid shape for testing');
@@ -55,9 +69,11 @@ function writeToFile(fileName, content) {
 
 async function init() {
     const res = await inquirer.prompt(questions);
-        const content = generateSVG(res);
-   
-    writeToFile('logo.svg', content);
+    const contentPromise = generateSVG(res);
+
+    contentPromise.then((content) => {
+        writeToFile('logo.svg', content);
+    })
 }
 
 init();

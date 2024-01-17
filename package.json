@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
+    "fs": "^0.0.1-security",
     "inquirer": "^8.2.6",
+    "svg-builder": "^2.0.0",
     "svgdom": "^0.1.19"
   }
 }
